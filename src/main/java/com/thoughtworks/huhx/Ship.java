@@ -27,4 +27,11 @@ public class Ship {
     this.location = location;
     this.direction = direction;
   }
+
+  public Location move(int miles) {
+    Point point = location.getPoint();
+    point.setY(point.getY() + miles);
+    location.setPoint(point);
+    return location;
+  }
 }
