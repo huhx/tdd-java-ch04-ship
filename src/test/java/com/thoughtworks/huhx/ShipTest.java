@@ -8,7 +8,7 @@ public class ShipTest {
 
   @Test
   public void whenInstantiatedThenLocationIsSet() {
-    Location location = new Location();
+    Location location = new Location(new Point(5, 7));
     Ship ship = new Ship(location);
     assertEquals(location, ship.getLocation());
   }
