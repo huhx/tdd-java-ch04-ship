@@ -31,4 +31,12 @@ public class ShipTest {
     assertEquals(location.getPoint().getX(), 5);
     assertEquals(location.getPoint().getY(), 6);
   }
+
+  @Test
+  public void whenShipMoveLeft() {
+    Ship ship = new Ship(new Location(new Point(5, 7)), WEST);
+    Location location = ship.move(1);
+    assertEquals(location.getPoint().getX(), 4);
+    assertEquals(location.getPoint().getY(), 7);
+  }
 }
