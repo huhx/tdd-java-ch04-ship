@@ -30,8 +30,13 @@ public class Ship {
 
   public Location move(int miles) {
     Point point = location.getPoint();
-    point.setY(point.getY() + miles);
-    location.setPoint(point);
+    if (direction.equals(Direction.SOUTH)) {
+      point.setY(point.getY() - miles);
+      location.setPoint(point);
+    } else if (direction.equals(Direction.NORTH)) {
+      point.setY(point.getY() + miles);
+      location.setPoint(point);
+    }
     return location;
   }
 }
