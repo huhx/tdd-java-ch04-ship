@@ -2,6 +2,7 @@ package com.thoughtworks.huhx;
 
 import org.testng.annotations.Test;
 
+import static com.thoughtworks.huhx.Direction.EAST;
 import static com.thoughtworks.huhx.Direction.NORTH;
 import static com.thoughtworks.huhx.Direction.SOUTH;
 import static com.thoughtworks.huhx.Direction.WEST;
@@ -37,6 +38,14 @@ public class ShipTest {
     Ship ship = new Ship(new Location(new Point(5, 7)), WEST);
     Location location = ship.move(1);
     assertEquals(location.getPoint().getX(), 4);
+    assertEquals(location.getPoint().getY(), 7);
+  }
+
+  @Test
+  public void whenShipMoveRight() {
+    Ship ship = new Ship(new Location(new Point(5, 7)), EAST);
+    Location location = ship.move(1);
+    assertEquals(location.getPoint().getX(), 6);
     assertEquals(location.getPoint().getY(), 7);
   }
 }

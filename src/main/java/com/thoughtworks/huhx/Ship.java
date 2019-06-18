@@ -39,6 +39,9 @@ public class Ship {
     } else if (direction.equals(Direction.WEST)) {
       point.setX(point.getX() - miles);
       location.setPoint(point);
+    } else if (direction.equals(Direction.EAST)) {
+      point.setX(point.getX() + miles);
+      location.setPoint(point);
     }
     return location;
   }
