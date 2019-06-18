@@ -1,13 +1,21 @@
 package com.thoughtworks.huhx;
 
 public enum Direction {
-  NORTH(0, 'N'), EAST(1, 'E'), SOUTH(2, 'S'), WEST(3, 'W'), NONE(4, 'X');
+  NORTH(0, 1), EAST(1, 0), SOUTH(0, -1), WEST(-1, 0), NONE(0, 0);
 
-  private int code;
-  private char value;
+  private int x;
+  private int y;
 
-  Direction(int code, char value) {
-    this.code = code;
-    this.value = value;
+  public int getX() {
+    return x;
+  }
+
+  public int getY() {
+    return y;
+  }
+
+  Direction(int x, int y) {
+    this.x = x;
+    this.y = y;
   }
 }

@@ -1,6 +1,5 @@
 package com.thoughtworks.huhx;
 
-
 public class Ship {
 
   private Location location;
@@ -11,18 +10,6 @@ public class Ship {
     return location;
   }
 
-  public void setLocation(Location location) {
-    this.location = location;
-  }
-
-  public Direction getDirection() {
-    return direction;
-  }
-
-  public void setDirection(Direction direction) {
-    this.direction = direction;
-  }
-
   public Ship(Location location, Direction direction) {
     this.location = location;
     this.direction = direction;
@@ -30,19 +17,9 @@ public class Ship {
 
   public Location move(int miles) {
     Point point = location.getPoint();
-    if (direction.equals(Direction.SOUTH)) {
-      point.setY(point.getY() - miles);
-      location.setPoint(point);
-    } else if (direction.equals(Direction.NORTH)) {
-      point.setY(point.getY() + miles);
-      location.setPoint(point);
-    } else if (direction.equals(Direction.WEST)) {
-      point.setX(point.getX() - miles);
-      location.setPoint(point);
-    } else if (direction.equals(Direction.EAST)) {
-      point.setX(point.getX() + miles);
-      location.setPoint(point);
-    }
+    int x = point.getX() + direction.getX() * miles;
+    int y = point.getY() + direction.getY() * miles;
+    location.setPoint(new Point(x, y));
     return location;
   }
 }
