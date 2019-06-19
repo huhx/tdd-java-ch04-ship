@@ -1,5 +1,6 @@
 package com.thoughtworks.huhx;
 
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static com.thoughtworks.huhx.Direction.EAST;
@@ -10,16 +11,22 @@ import static org.testng.AssertJUnit.assertEquals;
 
 public class ShipTest {
 
+  private Ship ship;
+  private Location location;
+
+  @BeforeClass
+  public void before() {
+    location = new Location(new Point(5, 7));
+    ship = new Ship(location);
+  }
+
   @Test
   public void whenInstantiatedThenLocationIsSet() {
-    Location location = new Location(new Point(5, 7));
-    Ship ship = new Ship(location);
     assertEquals(location, ship.getLocation());
   }
 
   @Test
   public void whenShipMoveForward() {
-    Ship ship = new Ship(new Location(new Point(5, 7)));
     Point point = ship.receiveCommand(new Command(NORTH, 1));
     assertEquals(point.getX(), 5);
     assertEquals(point.getY(), 8);
@@ -27,7 +34,6 @@ public class ShipTest {
 
   @Test
   public void whenShipMoveBackward() {
-    Ship ship = new Ship(new Location(new Point(5, 7)));
     Point point = ship.receiveCommand(new Command(SOUTH, 1));
     assertEquals(point.getX(), 5);
     assertEquals(point.getY(), 6);
@@ -35,7 +41,6 @@ public class ShipTest {
 
   @Test
   public void whenShipMoveLeft() {
-    Ship ship = new Ship(new Location(new Point(5, 7)));
     Point point = ship.receiveCommand(new Command(WEST, 1));
     assertEquals(point.getX(), 4);
     assertEquals(point.getY(), 7);
@@ -43,7 +48,6 @@ public class ShipTest {
 
   @Test
   public void whenShipMoveRight() {
-    Ship ship = new Ship(new Location(new Point(5, 7)));
     Point point = ship.receiveCommand(new Command(EAST, 1));
     assertEquals(point.getX(), 6);
     assertEquals(point.getY(), 7);
