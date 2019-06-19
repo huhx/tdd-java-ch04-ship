@@ -28,20 +28,32 @@ public class Ship {
   private Point moveUp(Command command, Point point) {
     int axisY = point.getY() + command.getMiles();
     if (axisY > plant.getHeight()) {
-      axisY -= 2 * plant.getHeight();
+      throw new RuntimeException("up to max");
     }
     return new Point(point.getX(), axisY);
   }
 
   private Point moveLeft(Command command, Point point) {
-    return new Point(point.getX() - command.getMiles(), point.getY());
+    int axisX = point.getX() - command.getMiles();
+    if (axisX < 0) {
+      throw new RuntimeException("left to max");
+    }
+    return new Point(axisX, point.getY());
   }
 
   private Point moveDown(Command command, Point point) {
-    return new Point(point.getX(), point.getY() - command.getMiles());
+    int axisY = point.getY() - command.getMiles();
+    if (axisY < 0) {
+      throw new RuntimeException("down to max");
+    }
+    return new Point(point.getX(), axisY);
   }
 
   private Point moveRight(Command command, Point point) {
-    return new Point(point.getX() + command.getMiles(), point.getY());
+    int axisX = point.getX() + command.getMiles();
+    if (axisX > plant.getWidth()) {
+      throw new RuntimeException("right to max");
+    }
+    return new Point(axisX, point.getY());
   }
 }

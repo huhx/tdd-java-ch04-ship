@@ -60,10 +60,23 @@ public class ShipTest {
     assertEquals(plant, ship.getPlant());
   }
 
-  @Test
-  public void whenVerticalExceed() {
-    Point point = ship.receiveCommand(new Command(NORTH, 7));
-    assertEquals(point.getX(), 5);
-    assertEquals(point.getY(), -6);
+  @Test(expectedExceptions = RuntimeException.class, expectedExceptionsMessageRegExp = "up to max")
+  public void whenVerticalNorthExceed() {
+    ship.receiveCommand(new Command(NORTH, 7));
+  }
+
+  @Test(expectedExceptions = RuntimeException.class, expectedExceptionsMessageRegExp = "down to max")
+  public void whenVerticalSouthExceed() {
+    ship.receiveCommand(new Command(SOUTH, 8));
+  }
+
+  @Test(expectedExceptions = RuntimeException.class, expectedExceptionsMessageRegExp = "left to max")
+  public void whenVerticalWestExceed() {
+    ship.receiveCommand(new Command(WEST, 8));
+  }
+
+  @Test(expectedExceptions = RuntimeException.class, expectedExceptionsMessageRegExp = "right to max")
+  public void whenVerticalEastExceed() {
+    ship.receiveCommand(new Command(EAST, 8));
   }
 }
