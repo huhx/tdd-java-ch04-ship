@@ -1,5 +1,6 @@
 package com.thoughtworks.huhx;
 
+import com.thoughtworks.huhx.exception.UnReachException;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -60,22 +61,22 @@ public class ShipTest {
     assertEquals(plant, ship.getPlant());
   }
 
-  @Test(expectedExceptions = RuntimeException.class, expectedExceptionsMessageRegExp = "up to max")
+  @Test(expectedExceptions = UnReachException.class, expectedExceptionsMessageRegExp = "up to max")
   public void whenVerticalNorthExceed() {
     ship.receiveCommand(new Command(NORTH, 7));
   }
 
-  @Test(expectedExceptions = RuntimeException.class, expectedExceptionsMessageRegExp = "down to max")
+  @Test(expectedExceptions = UnReachException.class, expectedExceptionsMessageRegExp = "down to max")
   public void whenVerticalSouthExceed() {
     ship.receiveCommand(new Command(SOUTH, 8));
   }
 
-  @Test(expectedExceptions = RuntimeException.class, expectedExceptionsMessageRegExp = "left to max")
+  @Test(expectedExceptions = UnReachException.class, expectedExceptionsMessageRegExp = "left to max")
   public void whenVerticalWestExceed() {
     ship.receiveCommand(new Command(WEST, 8));
   }
 
-  @Test(expectedExceptions = RuntimeException.class, expectedExceptionsMessageRegExp = "right to max")
+  @Test(expectedExceptions = UnReachException.class, expectedExceptionsMessageRegExp = "right to max")
   public void whenVerticalEastExceed() {
     ship.receiveCommand(new Command(EAST, 8));
   }

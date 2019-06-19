@@ -1,5 +1,6 @@
 package com.thoughtworks.huhx;
 
+import com.thoughtworks.huhx.exception.UnReachException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -28,7 +29,7 @@ public class Ship {
   private Point moveUp(Command command, Point point) {
     int axisY = point.getY() + command.getMiles();
     if (axisY > plant.getHeight()) {
-      throw new RuntimeException("up to max");
+      throw new UnReachException("up to max");
     }
     return new Point(point.getX(), axisY);
   }
@@ -36,7 +37,7 @@ public class Ship {
   private Point moveLeft(Command command, Point point) {
     int axisX = point.getX() - command.getMiles();
     if (axisX < 0) {
-      throw new RuntimeException("left to max");
+      throw new UnReachException("left to max");
     }
     return new Point(axisX, point.getY());
   }
@@ -44,7 +45,7 @@ public class Ship {
   private Point moveDown(Command command, Point point) {
     int axisY = point.getY() - command.getMiles();
     if (axisY < 0) {
-      throw new RuntimeException("down to max");
+      throw new UnReachException("down to max");
     }
     return new Point(point.getX(), axisY);
   }
@@ -52,7 +53,7 @@ public class Ship {
   private Point moveRight(Command command, Point point) {
     int axisX = point.getX() + command.getMiles();
     if (axisX > plant.getWidth()) {
-      throw new RuntimeException("right to max");
+      throw new UnReachException("right to max");
     }
     return new Point(axisX, point.getY());
   }
