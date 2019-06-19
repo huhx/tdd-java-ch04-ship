@@ -12,19 +12,19 @@ import static org.testng.AssertJUnit.assertEquals;
 public class ShipTest {
 
   private Ship ship;
-  private Location location;
+  private Point point;
   private Plant plant;
 
   @BeforeClass
   public void before() {
-    location = new Location(new Point(5, 7));
+    point = new Point(5, 7);
     plant = new Plant(10, 10);
-    ship = new Ship(location, plant);
+    ship = new Ship(point, plant);
   }
 
   @Test
   public void whenInstantiatedThenLocationIsSet() {
-    assertEquals(location, ship.getLocation());
+    assertEquals(point, ship.getPoint());
   }
 
   @Test

@@ -7,11 +7,10 @@ import lombok.Getter;
 @AllArgsConstructor
 public class Ship {
 
-  private Location location;
+  private Point point;
   private Plant plant;
 
   public Point receiveCommand(Command command) {
-    Point point = location.getPoint();
     switch (command.getDirection()) {
       case EAST:
         return moveRight(command, point);
