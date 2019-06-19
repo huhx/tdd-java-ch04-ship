@@ -26,7 +26,11 @@ public class Ship {
   }
 
   private Point moveUp(Command command, Point point) {
-    return new Point(point.getX(), point.getY() + command.getMiles());
+    int axisY = point.getY() + command.getMiles();
+    if (axisY > plant.getHeight()) {
+      axisY -= 2 * plant.getHeight();
+    }
+    return new Point(point.getX(), axisY);
   }
 
   private Point moveLeft(Command command, Point point) {

@@ -59,4 +59,11 @@ public class ShipTest {
   public void whenInitShipGetPlant() {
     assertEquals(plant, ship.getPlant());
   }
+
+  @Test
+  public void whenVerticalExceed() {
+    Point point = ship.receiveCommand(new Command(NORTH, 7));
+    assertEquals(point.getX(), 5);
+    assertEquals(point.getY(), -6);
+  }
 }
