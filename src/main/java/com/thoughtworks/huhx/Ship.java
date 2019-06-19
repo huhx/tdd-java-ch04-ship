@@ -16,20 +16,31 @@ public class Ship {
     Point point = location.getPoint();
     switch (command.getDirection()) {
       case EAST:
-        point.setX(point.getX() + command.getMiles());
-        break;
+        return moveRight(command, point);
       case SOUTH:
-        point.setY(point.getY() - command.getMiles());
-        break;
+        return moveDown(command, point);
       case WEST:
-        point.setX(point.getX() - command.getMiles());
-        break;
+        return moveLeft(command, point);
       case NORTH:
-        point.setY(point.getY() + command.getMiles());
-        break;
+        return moveUp(command, point);
       default:
-        break;
+        return point;
     }
-    return point;
+  }
+
+  private Point moveUp(Command command, Point point) {
+    return new Point(point.getX(), point.getY() + command.getMiles());
+  }
+
+  private Point moveLeft(Command command, Point point) {
+    return new Point((point.getX() - command.getMiles()), point.getY());
+  }
+
+  private Point moveDown(Command command, Point point) {
+    return new Point(point.getX(), point.getY() - command.getMiles());
+  }
+
+  private Point moveRight(Command command, Point point) {
+    return new Point((point.getX() + command.getMiles()), point.getY());
   }
 }
