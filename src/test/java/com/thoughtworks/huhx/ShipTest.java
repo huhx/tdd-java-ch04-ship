@@ -20,7 +20,7 @@ public class ShipTest {
   @Test
   public void whenShipMoveForward() {
     Ship ship = new Ship(new Location(new Point(5, 7)));
-    Point point = ship.move(new Command(NORTH, 1));
+    Point point = ship.receiveCommand(new Command(NORTH, 1));
     assertEquals(point.getX(), 5);
     assertEquals(point.getY(), 8);
   }
@@ -28,7 +28,7 @@ public class ShipTest {
   @Test
   public void whenShipMoveBackward() {
     Ship ship = new Ship(new Location(new Point(5, 7)));
-    Point point = ship.move(new Command(SOUTH, 1));
+    Point point = ship.receiveCommand(new Command(SOUTH, 1));
     assertEquals(point.getX(), 5);
     assertEquals(point.getY(), 6);
   }
@@ -36,7 +36,7 @@ public class ShipTest {
   @Test
   public void whenShipMoveLeft() {
     Ship ship = new Ship(new Location(new Point(5, 7)));
-    Point point = ship.move(new Command(WEST, 1));
+    Point point = ship.receiveCommand(new Command(WEST, 1));
     assertEquals(point.getX(), 4);
     assertEquals(point.getY(), 7);
   }
@@ -44,7 +44,7 @@ public class ShipTest {
   @Test
   public void whenShipMoveRight() {
     Ship ship = new Ship(new Location(new Point(5, 7)));
-    Point point = ship.move(new Command(EAST, 1));
+    Point point = ship.receiveCommand(new Command(EAST, 1));
     assertEquals(point.getX(), 6);
     assertEquals(point.getY(), 7);
   }

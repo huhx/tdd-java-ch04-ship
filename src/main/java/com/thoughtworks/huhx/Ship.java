@@ -12,7 +12,7 @@ public class Ship {
     this.location = location;
   }
 
-  public Point move(Command command) {
+  public Point receiveCommand(Command command) {
     Point point = location.getPoint();
     int x = point.getX() + command.getDirection().getX() * command.getMiles();
     int y = point.getY() + command.getDirection().getY() * command.getMiles();
