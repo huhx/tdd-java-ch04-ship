@@ -1,11 +1,11 @@
 package com.thoughtworks.huhx;
 
-public class Commands {
+public class Command {
 
   private Direction direction;
   private int miles;
 
-  public Commands(Direction direction, int miles) {
+  public Command(Direction direction, int miles) {
     this.direction = direction;
     this.miles = miles;
   }
