@@ -1,16 +1,13 @@
 package com.thoughtworks.huhx;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public class Ship {
 
   private Location location;
-
-  public Location getLocation() {
-    return location;
-  }
-
-  public Ship(Location location) {
-    this.location = location;
-  }
 
   public Point receiveCommand(Command command) {
     Point point = location.getPoint();
@@ -33,7 +30,7 @@ public class Ship {
   }
 
   private Point moveLeft(Command command, Point point) {
-    return new Point((point.getX() - command.getMiles()), point.getY());
+    return new Point(point.getX() - command.getMiles(), point.getY());
   }
 
   private Point moveDown(Command command, Point point) {
@@ -41,6 +38,6 @@ public class Ship {
   }
 
   private Point moveRight(Command command, Point point) {
-    return new Point((point.getX() + command.getMiles()), point.getY());
+    return new Point(point.getX() + command.getMiles(), point.getY());
   }
 }
