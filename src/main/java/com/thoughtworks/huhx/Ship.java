@@ -8,6 +8,7 @@ import lombok.Getter;
 public class Ship {
 
   private Location location;
+  private Plant plant;
 
   public Point receiveCommand(Command command) {
     Point point = location.getPoint();

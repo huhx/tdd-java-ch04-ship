@@ -13,11 +13,13 @@ public class ShipTest {
 
   private Ship ship;
   private Location location;
+  private Plant plant;
 
   @BeforeClass
   public void before() {
     location = new Location(new Point(5, 7));
-    ship = new Ship(location);
+    plant = new Plant(10, 10);
+    ship = new Ship(location, plant);
   }
 
   @Test
@@ -51,5 +53,10 @@ public class ShipTest {
     Point point = ship.receiveCommand(new Command(EAST, 1));
     assertEquals(point.getX(), 6);
     assertEquals(point.getY(), 7);
+  }
+
+  @Test
+  public void whenInitShipGetPlant() {
+    assertEquals(plant, ship.getPlant());
   }
 }
